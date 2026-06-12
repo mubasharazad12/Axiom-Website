@@ -15,7 +15,7 @@ const fallbackContent = {
     platformHeadline: "The visual AI automation platform",
     platformText:
       "Connect any app, data source, or AI model. Build and manage automations and AI agents visually, in code, or with a prompt.",
-    primaryCta: { text: "Book Free Strategy Call", url: "#success-stories" },
+    primaryCta: { text: "Contact Us", url: "mailto:autoaxiomai@gmail.com" },
     secondaryCta: { text: "Watch Demo", url: "#success-stories" }
   },
   secondSection: {
@@ -105,9 +105,19 @@ function initSolutionsSection(section) {
 
   const renderPanel = () => {
     const active = tabs[activeIndex];
+    const isItPanel = active.id === "it";
     panel.innerHTML = `
       <div class="solutions-media">
-        <div class="solution-photo" role="img" aria-label="${active.imageAlt || active.title}">
+        <div class="solution-photo ${isItPanel ? "solution-photo-lottie" : ""}" role="img" aria-label="${active.imageAlt || active.title}">
+          ${
+            isItPanel
+              ? `<iframe
+                  src="https://lottie.host/embed/7a026878-8d7f-4cb3-b5ba-f90f452b8531/9FIfHhLkPS.lottie"
+                  title="IT automation animation"
+                  loading="lazy"
+                ></iframe>`
+              : ""
+          }
           <div class="solution-screen"></div>
           <div class="solution-person">
             <span></span>
@@ -202,31 +212,19 @@ function initSuccessStories(stories) {
     .join("");
 }
 
-function initChatAssistant() {
-  const toggle = document.getElementById("chatToggle");
-  const panel = document.getElementById("chatPanel");
-  const form = document.getElementById("chatForm");
-  const input = document.getElementById("chatInput");
-  const body = document.getElementById("chatBody");
-  if (!toggle || !panel || !form || !input || !body) return;
+function initBackToTop() {
+  const button = document.getElementById("backToTop");
+  if (!button) return;
 
-  toggle.addEventListener("click", () => {
-    panel.classList.toggle("open");
-    panel.setAttribute("aria-hidden", panel.classList.contains("open") ? "false" : "true");
-  });
+  const toggleVisibility = () => {
+    button.classList.toggle("visible", window.scrollY > 520);
+  };
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const text = input.value.trim();
-    if (!text) return;
-    body.insertAdjacentHTML("beforeend", `<p class="user">${text}</p>`);
-    body.insertAdjacentHTML(
-      "beforeend",
-      `<p class="bot">Great question. We can map a custom AI automation plan for your business.</p>`
-    );
-    body.scrollTop = body.scrollHeight;
-    input.value = "";
+  button.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
+  window.addEventListener("scroll", toggleVisibility, { passive: true });
+  toggleVisibility();
 }
 
 function populateContent(content) {
@@ -240,7 +238,7 @@ function populateContent(content) {
   document.getElementById("platformText").textContent = hero.platformText || "";
 
   const primary = document.getElementById("primaryCta");
-  primary.textContent = hero.primaryCta?.text || "Book Free Strategy Call";
+  primary.textContent = hero.primaryCta?.text || "Contact Us";
   primary.href = content.integrations?.calendlyUrl || hero.primaryCta?.url || "#success-stories";
   const secondary = document.getElementById("secondaryCta");
   secondary.textContent = hero.secondaryCta?.text || "Watch Demo";
@@ -265,32 +263,21 @@ function populateContent(content) {
 
   document.getElementById("servicesGrid").innerHTML = (content.services || [])
     .map(
-      (service) => `
+      (service, index) => `
       <article class="service-card reveal">
-        <div class="service-card__border"></div>
+        <div class="service-card__top">
+          <span class="service-card__number">${String(index + 1).padStart(2, "0")}</span>
+          <span class="service-card__status">AI Agent</span>
+        </div>
         <div class="service-card__title-container">
           <h3 class="service-card__title">${service.name}</h3>
-          <p class="service-card__paragraph">${service.roi || "Custom AI automation blueprint for measurable business outcomes."}</p>
+          <p class="service-card__paragraph">${service.solution || "Custom AI automation blueprint for measurable business outcomes."}</p>
         </div>
-        <hr class="service-card__line" />
-        <ul class="service-card__list">
-          ${(service.features || [service.problem, service.solution, service.roi])
-            .filter(Boolean)
-            .map(
-              (feature) =>
-                `<li class="service-card__list-item"><span class="service-card__check">✓</span><span class="service-card__list-text">${feature}</span></li>`
-            )
-            .join("")}
-        </ul>
-        <a class="service-card__button" href="#success-stories">${service.button || "Book Strategy Call"}</a>
+        <a class="btn btn-primary service-card__button" href="mailto:autoaxiomai@gmail.com">Contact Us</a>
       </article>
     `
     )
     .join("");
-
-  const footerLinks = document.getElementById("footerLinks");
-  footerLinks.className = "footer-links";
-  footerLinks.innerHTML = (content.footer || []).map((item) => `<a href="#">${item}</a>`).join("");
 
   initSolutionsSection(content.solutionsSection);
   initAppsShowcase(content.integrationsShowcase);
@@ -314,7 +301,7 @@ async function main() {
   populateContent(content);
   initNavigation();
   initRevealAnimations();
-  initChatAssistant();
+  initBackToTop();
 }
 
 main();

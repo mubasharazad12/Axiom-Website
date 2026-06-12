@@ -31,8 +31,14 @@
           <a href="#solutions">Solutions</a>
           <a href="#apps">Apps</a>
           <a href="#success-stories">Success Stories</a>
-          <a href="#success-stories" class="btn btn-small btn-primary">Explore</a>
         </nav>
+        <div class="header-lottie" aria-hidden="true">
+          <iframe
+            src="https://lottie.host/embed/f1fbaca6-6d61-4682-9d3d-e99b8086ea1c/CknF3idp3I.lottie"
+            title="Axiom AI header animation"
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
     </header>
 
@@ -116,11 +122,21 @@
         </div>
       </section>
 
-      <section id="services" class="section">
+      <section id="services" class="section services-section">
         <div class="container">
-          <div class="section-head section-head-center reveal">
-            <h2>Ready-to-launch growth systems</h2>
-            <p>Choose a focused automation package built to move fast, create momentum, and make the next campaign easier to run.</p>
+          <div class="services-hero reveal">
+            <div class="section-head">
+              <p class="section-kicker">AI Services</p>
+              <h2>Ready-to-launch AI agent systems</h2>
+              <p>Choose a focused automation system built to solve real operational bottlenecks, improve response speed, and create measurable ROI.</p>
+            </div>
+            <div class="services-lottie" aria-hidden="true">
+              <iframe
+                src="https://lottie.host/embed/bf22daf6-1d8c-42f2-a469-4f3dd89d3966/ai2SM4XzGl.lottie"
+                title="AI services animation"
+                loading="lazy"
+              ></iframe>
+            </div>
           </div>
           <div class="services-grid" id="servicesGrid"></div>
         </div>
@@ -164,36 +180,49 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div>
+        <div class="footer-brand-block reveal">
           <a class="brand" href="#home">
             <span class="brand-mark">A</span>
             <span class="brand-text">Axiom AI</span>
           </a>
-          <p>We build AI employees that operate 24/7 to scale your business.</p>
+          <p>AI agents, automation systems, and connected workflows built to help modern teams move faster.</p>
+          <div class="footer-socials" aria-label="Social links">
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">Facebook</a>
+          </div>
         </div>
-        <div id="footerLinks"></div>
-        <div class="integrations">
-          <h4>Integrations</h4>
-          <p>Calendly · CRM · Live Chat · Analytics</p>
+        <div class="footer-links-block reveal">
+          <h4>Company</h4>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="#services">Services</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#apps">Apps</a>
+            <a href="#success-stories">Success Stories</a>
+          </nav>
         </div>
+        <div class="footer-contact-block reveal">
+          <h4>Contact</h4>
+          <a href="tel:+923253375533">+92 325 3375533</a>
+          <a href="mailto:autoaxiomai@gmail.com">autoaxiomai@gmail.com</a>
+          <a class="btn btn-primary footer-contact-btn" href="mailto:autoaxiomai@gmail.com">Contact Us</a>
+        </div>
+        <div class="footer-lottie reveal" aria-hidden="true">
+          <iframe
+            src="https://lottie.host/embed/ac37b7d9-46a1-4f6c-8172-71c44d1c58ef/Rdc91w7249.lottie"
+            title="Axiom AI footer animation"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>Copyright 2026 Axiom AI. All rights reserved.</p>
       </div>
     </footer>
 
-    <div class="chat-widget" id="chatWidget">
-      <button id="chatToggle" class="chat-toggle" aria-label="Open AI chat assistant">
-        AI Assistant
-      </button>
-      <div class="chat-panel" id="chatPanel" aria-hidden="true">
-        <div class="chat-header">Live AI Assistant</div>
-        <div class="chat-body" id="chatBody">
-          <p class="bot">Hi! Want to see how AI can save your team 20+ hours weekly?</p>
-        </div>
-        <form id="chatForm" class="chat-form">
-          <input id="chatInput" type="text" placeholder="Ask about services..." required />
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    </div>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Go to top">
+      <span></span>
+    </button>
 
     <script src="app.js" defer></script>
   </body>

@@ -21,8 +21,8 @@
     "platformHeadline": "One workspace for automations, agents, and growth systems",
     "platformText": "Map your workflows, connect your stack, and let AI agents handle repetitive operations while your team focuses on decisions that matter.",
     "primaryCta": {
-      "text": "Book a Call",
-      "url": "#services"
+      "text": "Contact Us",
+      "url": "mailto:autoaxiomai@gmail.com"
     },
     "secondaryCta": {
       "text": "Explore more",
@@ -73,7 +73,7 @@
         "AI Solution: 24/7 support agent trained on your policies, products, and help docs.",
         "Expected ROI: Faster response times, fewer manual tickets, and happier customers."
       ],
-      "button": "Book a Call"
+      "button": "Contact Us"
     },
     {
       "name": "Voice Calling AI Agents",
@@ -85,7 +85,7 @@
         "AI Solution: Human-like voice agents for inbound support, reminders, and follow-ups.",
         "Expected ROI: More answered calls, lower staffing pressure, and better conversion."
       ],
-      "button": "Book a Call"
+      "button": "Contact Us"
     },
     {
       "name": "Lead Qualification Agents",
@@ -97,7 +97,7 @@
         "AI Solution: Automated qualification, scoring, enrichment, and sales routing.",
         "Expected ROI: Higher close rates, cleaner pipeline, and faster speed-to-lead."
       ],
-      "button": "Book a Call"
+      "button": "Contact Us"
     },
     {
       "name": "Appointment Booking Agents",
@@ -109,7 +109,7 @@
         "AI Solution: Calendar-connected agents that book, reschedule, and confirm appointments.",
         "Expected ROI: More bookings, fewer no-shows, and less admin work."
       ],
-      "button": "Book a Call"
+      "button": "Contact Us"
     },
     {
       "name": "CRM Automation",
@@ -121,7 +121,7 @@
         "AI Solution: Automated updates, reminders, routing, summaries, and CRM workflows.",
         "Expected ROI: Better pipeline visibility, less admin, and stronger sales execution."
       ],
-      "button": "Book a Call"
+      "button": "Contact Us"
     },
     {
       "name": "Sales AI Assistants",
@@ -133,7 +133,7 @@
         "AI Solution: Rep copilots for outreach, call prep, summaries, and next-step guidance.",
         "Expected ROI: More productive reps, faster follow-up, and better conversion."
       ],
-      "button": "Book a Call"
+      "button": "Contact Us"
     },
     {
       "name": "Internal Knowledge Base Agents",
@@ -145,7 +145,7 @@
         "AI Solution: Secure internal assistant trained on approved company knowledge.",
         "Expected ROI: Faster onboarding, fewer repeat questions, and better team alignment."
       ],
-      "button": "Book a Call"
+      "button": "Contact Us"
     },
     {
       "name": "Workflow Automation Systems",
@@ -157,7 +157,7 @@
         "AI Solution: Connected automations across your tools, data, approvals, and alerts.",
         "Expected ROI: Lower operating costs, faster delivery, and fewer process mistakes."
       ],
-      "button": "Book a Call"
+      "button": "Contact Us"
     }
   ],
   "footer": [
@@ -360,6 +360,6 @@
     ]
   },
   "integrations": {
-    "calendlyUrl": "#services"
+    "calendlyUrl": "mailto:autoaxiomai@gmail.com"
   }
 }
