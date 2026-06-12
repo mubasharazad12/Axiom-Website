@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Premium AI automation agency building custom AI employees that work 24/7."
+    />
+    <title>Axiom AI Automation Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#home">
+          <span class="brand-mark">A</span>
+          <span class="brand-text">Axiom AI</span>
+        </a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="mainNav" class="main-nav">
+          <a href="#services">Services</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#apps">Apps</a>
+          <a href="#success-stories">Success Stories</a>
+          <a href="#success-stories" class="btn btn-small btn-primary">Explore</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-content reveal">
+            <p class="eyebrow" id="agencyTagline"></p>
+            <h1 id="heroHeadline"></h1>
+            <p class="hero-subheadline" id="heroSubheadline"></p>
+            <div class="hero-stats" id="heroStats"></div>
+            <div class="cta-group">
+              <a id="primaryCta" class="btn btn-primary" href="#success-stories"></a>
+              <a id="secondaryCta" class="btn btn-secondary" href="#success-stories"></a>
+            </div>
+            <div class="audience-list" id="targetAudience"></div>
+          </div>
+          <div class="hero-visual reveal">
+            <div class="workflow-card platform-card">
+              <p class="platform-label" id="platformLabel"></p>
+              <h3 id="platformHeadline"></h3>
+              <p id="platformText"></p>
+              <div class="workflow-orbit">
+                <div class="orbit-node">Apps</div>
+                <div class="orbit-node">Data</div>
+                <div class="orbit-node">AI Models</div>
+                <div class="orbit-node">Agents</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="capabilities" class="section capabilities">
+        <div class="container">
+          <div class="section-head section-head-center reveal">
+            <h2 id="capabilitiesHeadline"></h2>
+            <p id="capabilitiesSubheadline"></p>
+          </div>
+          <div class="capabilities-grid" id="capabilitiesGrid"></div>
+          <div class="capabilities-cta reveal">
+            <a id="capabilitiesCta" class="btn btn-primary" href="#services"></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="solutions" class="section solutions-section">
+        <div class="container">
+          <div class="section-head section-head-center reveal">
+            <p class="section-kicker" id="solutionsKicker"></p>
+            <h2 id="solutionsHeadline"></h2>
+            <p id="solutionsSubheadline"></p>
+          </div>
+          <div class="solutions-tabs-wrap reveal" id="solutionsTabs"></div>
+          <article class="solutions-panel reveal" id="solutionsPanel"></article>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="container">
+          <div class="section-head section-head-center reveal">
+            <h2>Ready-to-launch growth systems</h2>
+            <p>Choose a focused automation package built to move fast, create momentum, and make the next campaign easier to run.</p>
+          </div>
+          <div class="services-grid" id="servicesGrid"></div>
+        </div>
+      </section>
+
+      <section id="apps" class="section integrations-showcase">
+        <div class="container">
+          <div class="section-head section-head-center reveal">
+            <p class="section-kicker" id="appsKicker"></p>
+            <h2 id="appsHeadline"></h2>
+            <p id="appsSubheadline"></p>
+          </div>
+          <div class="apps-grid reveal" id="appsGrid"></div>
+          <div class="capabilities-cta reveal">
+            <a id="appsCta" class="btn btn-primary" href="#success-stories"></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="success-stories" class="section success-stories">
+        <div class="container">
+          <div class="section-head section-head-center reveal">
+            <p class="section-kicker success-kicker" id="successKicker"></p>
+            <h2 id="successHeadline"></h2>
+            <p id="successSubheadline"></p>
+          </div>
+          <div class="success-grid" id="successGrid"></div>
+          <div class="capabilities-cta reveal">
+            <a id="successCta" class="btn btn-primary" href="#success-stories"></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="#home">
+            <span class="brand-mark">A</span>
+            <span class="brand-text">Axiom AI</span>
+          </a>
+          <p>We build AI employees that operate 24/7 to scale your business.</p>
+        </div>
+        <div id="footerLinks"></div>
+        <div class="integrations">
+          <h4>Integrations</h4>
+          <p>Calendly · CRM · Live Chat · Analytics</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="chat-widget" id="chatWidget">
+      <button id="chatToggle" class="chat-toggle" aria-label="Open AI chat assistant">
+        AI Assistant
+      </button>
+      <div class="chat-panel" id="chatPanel" aria-hidden="true">
+        <div class="chat-header">Live AI Assistant</div>
+        <div class="chat-body" id="chatBody">
+          <p class="bot">Hi! Want to see how AI can save your team 20+ hours weekly?</p>
+        </div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" type="text" placeholder="Ask about services..." required />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

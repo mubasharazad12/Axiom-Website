@@ -1,0 +1,320 @@
+const contentPath = "data/site-content.json";
+
+const fallbackContent = {
+  agencyTagline: "Our Services",
+  hero: {
+    headline: "AI & Automation Solutions for Scalable Growth",
+    subheadline:
+      "Unlock the full potential of AI & automation with tailored solutions. Understand your current processes, systems, and data to identify where AI can drive impactful change.",
+    stats: [
+      { value: "260+", label: "Hours Saved / Yr" },
+      { value: "3x", label: "Pipeline Velocity" },
+      { value: "ROI+", label: "Guaranteed Outcomes" }
+    ],
+    platformLabel: "Platform",
+    platformHeadline: "The visual AI automation platform",
+    platformText:
+      "Connect any app, data source, or AI model. Build and manage automations and AI agents visually, in code, or with a prompt.",
+    primaryCta: { text: "Book Free Strategy Call", url: "#success-stories" },
+    secondaryCta: { text: "Watch Demo", url: "#success-stories" }
+  },
+  secondSection: {
+    headline: "Automate business processes with confidence",
+    subheadline:
+      "From a simple workflow to managing AI automation systems across your entire business, make it happen with Axiom.",
+    cta: { text: "Explore more", url: "#services" },
+    cards: [
+      { icon: "✨", title: "Build and ship fast, be first", description: "Move from idea to automation quickly." },
+      { icon: "↗", title: "Solve smarter, boost efficiency", description: "Connect tools and reduce manual effort." },
+      { icon: "👥", title: "Orchestrate with clarity and control", description: "Manage autonomous AI agents at scale." }
+    ]
+  },
+  targetAudience: ["Small Business Owners", "Service Businesses", "E-commerce Brands"],
+  services: [],
+  footer: ["Services", "Solutions", "Apps", "Success Stories", "Privacy Policy", "Terms"],
+  integrationsShowcase: { kicker: "Applications", headline: "3,000+ pre-built apps. Limitless integration.", subheadline: "", cta: { text: "Browse apps", url: "#success-stories" }, apps: [] },
+  solutionsSection: { kicker: "Solutions", headline: "Adapt at speed with visual-first automation and AI", subheadline: "", defaultTab: "", tabs: [] },
+  successStories: { kicker: "Success stories", headline: "Automation success stories", subheadline: "", cta: { text: "Explore success stories", url: "#success-stories" }, cards: [] }
+};
+
+async function loadContent() {
+  try {
+    const response = await fetch(contentPath);
+    if (!response.ok) throw new Error("Could not load JSON");
+    return await response.json();
+  } catch {
+    return fallbackContent;
+  }
+}
+
+function renderList(container, items, className = "") {
+  if (!container) return;
+  container.innerHTML = "";
+  items.forEach((item) => {
+    const span = document.createElement("span");
+    if (className) span.className = className;
+    span.textContent = item;
+    container.appendChild(span);
+  });
+}
+
+function initNavigation() {
+  const menuBtn = document.getElementById("menuBtn");
+  const nav = document.getElementById("mainNav");
+  if (!menuBtn || !nav) return;
+  menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
+  nav.querySelectorAll("a").forEach((link) =>
+    link.addEventListener("click", () => nav.classList.remove("open"))
+  );
+}
+
+function initRevealAnimations() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll(".reveal, .service-card, .success-card").forEach((el) => {
+    el.classList.add("reveal");
+    observer.observe(el);
+  });
+}
+
+function initSolutionsSection(section) {
+  const tabsContainer = document.getElementById("solutionsTabs");
+  const panel = document.getElementById("solutionsPanel");
+  if (!tabsContainer || !panel || !section?.tabs?.length) return;
+  document.getElementById("solutionsKicker").textContent = section.kicker || "Solutions";
+  document.getElementById("solutionsHeadline").textContent = section.headline || "";
+  document.getElementById("solutionsSubheadline").textContent = section.subheadline || "";
+
+  const tabs = section.tabs;
+  let activeIndex = Math.max(0, tabs.findIndex((tab) => tab.id === section.defaultTab));
+
+  const renderTabs = () => {
+    tabsContainer.innerHTML = tabs
+      .map((tab, idx) => `<button type="button" class="solutions-tab ${idx === activeIndex ? "active" : ""}" data-index="${idx}">${tab.label}</button>`)
+      .join("");
+  };
+
+  const renderPanel = () => {
+    const active = tabs[activeIndex];
+    panel.innerHTML = `
+      <div class="solutions-media">
+        <div class="solution-photo" role="img" aria-label="${active.imageAlt || active.title}">
+          <div class="solution-screen"></div>
+          <div class="solution-person">
+            <span></span>
+            <strong>${active.label}</strong>
+          </div>
+        </div>
+        <div class="solutions-flow">
+          ${(active.flow || [])
+            .map((step, i) => `
+            <div class="flow-step"><span class="flow-icon">${step.icon || "•"}</span><small>${step.label}</small></div>
+            ${i < active.flow.length - 1 ? '<span class="flow-connector">•••</span>' : ""}
+          `)
+            .join("")}
+        </div>
+      </div>
+      <div class="solutions-copy">
+        <h3>${active.title}</h3>
+        <p>${active.description}</p>
+        <a class="btn btn-primary" href="${active.ctaUrl || "#success-stories"}">${active.ctaText || "Learn more"}</a>
+      </div>
+    `;
+  };
+
+  tabsContainer.addEventListener("click", (event) => {
+    const button = event.target.closest(".solutions-tab");
+    if (!button) return;
+    const index = Number(button.dataset.index);
+    if (Number.isNaN(index)) return;
+    activeIndex = index;
+    renderTabs();
+    renderPanel();
+  });
+
+  renderTabs();
+  renderPanel();
+}
+
+function initAppsShowcase(showcase) {
+  if (!showcase) return;
+  document.getElementById("appsKicker").textContent = showcase.kicker || "Applications";
+  document.getElementById("appsHeadline").textContent = showcase.headline || "";
+  document.getElementById("appsSubheadline").textContent = showcase.subheadline || "";
+  const cta = document.getElementById("appsCta");
+  cta.textContent = showcase.cta?.text || "Browse apps";
+  cta.href = showcase.cta?.url || "#success-stories";
+
+  const grid = document.getElementById("appsGrid");
+  grid.innerHTML = (showcase.apps || [])
+    .map((app) => {
+      const icon = app
+        .split(" ")
+        .map((part) => part[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase();
+      return `<article class="app-card"><span class="app-icon">${icon}</span><span class="app-name">${app}</span></article>`;
+    })
+    .join("");
+}
+
+function initSuccessStories(stories) {
+  if (!stories) return;
+  document.getElementById("successKicker").textContent = stories.kicker || "Success stories";
+  document.getElementById("successHeadline").textContent = stories.headline || "";
+  document.getElementById("successSubheadline").textContent = stories.subheadline || "";
+  const cta = document.getElementById("successCta");
+  cta.textContent = stories.cta?.text || "Explore success stories";
+  cta.href = stories.cta?.url || "#success-stories";
+  const grid = document.getElementById("successGrid");
+  grid.innerHTML = (stories.cards || [])
+    .map(
+      (story, index) => `
+      <article class="success-card reveal">
+        <div class="success-card-media success-card-media-${index + 1}">
+          <span class="story-logo">A</span>
+          <span class="story-dots">•••</span>
+          <span class="story-person">${(story.person || "Client")
+            .split(" ")
+            .map((part) => part[0])
+            .join("")
+            .slice(0, 2)}</span>
+          <span class="story-dots">•••</span>
+          <span class="story-company">${story.company || "AI"}</span>
+        </div>
+        <div class="success-card-body">
+          <p class="success-meta">${story.date || ""} • ${story.duration || ""}</p>
+          <h3>${story.title}</h3>
+        </div>
+      </article>
+    `
+    )
+    .join("");
+}
+
+function initChatAssistant() {
+  const toggle = document.getElementById("chatToggle");
+  const panel = document.getElementById("chatPanel");
+  const form = document.getElementById("chatForm");
+  const input = document.getElementById("chatInput");
+  const body = document.getElementById("chatBody");
+  if (!toggle || !panel || !form || !input || !body) return;
+
+  toggle.addEventListener("click", () => {
+    panel.classList.toggle("open");
+    panel.setAttribute("aria-hidden", panel.classList.contains("open") ? "false" : "true");
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    body.insertAdjacentHTML("beforeend", `<p class="user">${text}</p>`);
+    body.insertAdjacentHTML(
+      "beforeend",
+      `<p class="bot">Great question. We can map a custom AI automation plan for your business.</p>`
+    );
+    body.scrollTop = body.scrollHeight;
+    input.value = "";
+  });
+}
+
+function populateContent(content) {
+  const hero = content.hero || {};
+  const second = content.secondSection || {};
+  document.getElementById("agencyTagline").textContent = content.agencyTagline || "";
+  document.getElementById("heroHeadline").textContent = hero.headline || "";
+  document.getElementById("heroSubheadline").textContent = hero.subheadline || "";
+  document.getElementById("platformLabel").textContent = hero.platformLabel || "Platform";
+  document.getElementById("platformHeadline").textContent = hero.platformHeadline || "";
+  document.getElementById("platformText").textContent = hero.platformText || "";
+
+  const primary = document.getElementById("primaryCta");
+  primary.textContent = hero.primaryCta?.text || "Book Free Strategy Call";
+  primary.href = content.integrations?.calendlyUrl || hero.primaryCta?.url || "#success-stories";
+  const secondary = document.getElementById("secondaryCta");
+  secondary.textContent = hero.secondaryCta?.text || "Watch Demo";
+  secondary.href = hero.secondaryCta?.url || "#success-stories";
+
+  document.getElementById("heroStats").innerHTML = (hero.stats || [])
+    .map((stat) => `<article class="hero-stat"><strong>${stat.value}</strong><span>${stat.label}</span></article>`)
+    .join("");
+
+  renderList(document.getElementById("targetAudience"), content.targetAudience || []);
+  document.getElementById("capabilitiesHeadline").textContent = second.headline || "";
+  document.getElementById("capabilitiesSubheadline").textContent = second.subheadline || "";
+  document.getElementById("capabilitiesGrid").innerHTML = (second.cards || [])
+    .map(
+      (card) =>
+        `<article class="capability-card reveal"><div class="capability-icon">${card.icon || "•"}</div><h3>${card.title}</h3><p>${card.description}</p></article>`
+    )
+    .join("");
+  const capCta = document.getElementById("capabilitiesCta");
+  capCta.textContent = second.cta?.text || "Explore more";
+  capCta.href = second.cta?.url || "#services";
+
+  document.getElementById("servicesGrid").innerHTML = (content.services || [])
+    .map(
+      (service) => `
+      <article class="service-card reveal">
+        <div class="service-card__border"></div>
+        <div class="service-card__title-container">
+          <h3 class="service-card__title">${service.name}</h3>
+          <p class="service-card__paragraph">${service.roi || "Custom AI automation blueprint for measurable business outcomes."}</p>
+        </div>
+        <hr class="service-card__line" />
+        <ul class="service-card__list">
+          ${(service.features || [service.problem, service.solution, service.roi])
+            .filter(Boolean)
+            .map(
+              (feature) =>
+                `<li class="service-card__list-item"><span class="service-card__check">✓</span><span class="service-card__list-text">${feature}</span></li>`
+            )
+            .join("")}
+        </ul>
+        <a class="service-card__button" href="#success-stories">${service.button || "Book Strategy Call"}</a>
+      </article>
+    `
+    )
+    .join("");
+
+  const footerLinks = document.getElementById("footerLinks");
+  footerLinks.className = "footer-links";
+  footerLinks.innerHTML = (content.footer || []).map((item) => `<a href="#">${item}</a>`).join("");
+
+  initSolutionsSection(content.solutionsSection);
+  initAppsShowcase(content.integrationsShowcase);
+  initSuccessStories(content.successStories);
+}
+
+async function main() {
+  const loaded = await loadContent();
+  const content = {
+    ...fallbackContent,
+    ...loaded,
+    hero: { ...fallbackContent.hero, ...(loaded.hero || {}) },
+    secondSection: { ...fallbackContent.secondSection, ...(loaded.secondSection || {}) },
+    solutionsSection: { ...fallbackContent.solutionsSection, ...(loaded.solutionsSection || {}) },
+    integrationsShowcase: {
+      ...fallbackContent.integrationsShowcase,
+      ...(loaded.integrationsShowcase || {})
+    },
+    successStories: { ...fallbackContent.successStories, ...(loaded.successStories || {}) }
+  };
+  populateContent(content);
+  initNavigation();
+  initRevealAnimations();
+  initChatAssistant();
+}
+
+main();

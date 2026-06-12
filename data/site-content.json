@@ -1,0 +1,283 @@
+{
+  "agencyTagline": "AI Automation Platform",
+  "hero": {
+    "headline": "Automate business processes with confidence",
+    "subheadline": "From a simple workflow to managing AI automation systems across your entire business, Axiom helps you design, deploy, and optimize every step.",
+    "stats": [
+      {
+        "value": "10",
+        "label": "Launch Weeks"
+      },
+      {
+        "value": "10,000",
+        "label": "Target Views"
+      },
+      {
+        "value": "2 hrs",
+        "label": "Marketing Consultation"
+      }
+    ],
+    "platformLabel": "Visual AI Operations",
+    "platformHeadline": "One workspace for automations, agents, and growth systems",
+    "platformText": "Map your workflows, connect your stack, and let AI agents handle repetitive operations while your team focuses on decisions that matter.",
+    "primaryCta": {
+      "text": "Book a Call",
+      "url": "#services"
+    },
+    "secondaryCta": {
+      "text": "Explore more",
+      "url": "#capabilities"
+    }
+  },
+  "secondSection": {
+    "headline": "Automate business processes with confidence",
+    "subheadline": "From a simple workflow, to managing AI automation systems across your entire business, make it happen with Axiom.",
+    "cta": {
+      "text": "Explore more",
+      "url": "#solutions"
+    },
+    "cards": [
+      {
+        "icon": "*",
+        "title": "Build and ship fast, be first",
+        "description": "Whatever you want to automate, Axiom gets you moving. Visually design solutions without code to save time."
+      },
+      {
+        "icon": "↗",
+        "title": "Solve smarter, boost efficiency",
+        "description": "When complexity grows, Axiom lets you customize automations and plug in AI apps for better, faster results."
+      },
+      {
+        "icon": "◎",
+        "title": "Orchestrate with clarity and control",
+        "description": "As you think bigger, create autonomous AI agents and manage everything with a real-time visual map."
+      }
+    ]
+  },
+  "targetAudience": [
+    "Operations",
+    "Marketing",
+    "Sales",
+    "Finance",
+    "Customer Experience",
+    "People"
+  ],
+  "services": [
+    {
+      "name": "Explosive Growth",
+      "problem": "Your next content push needs more reach, more consistency, and less manual coordination.",
+      "solution": "Launch a complete AI-assisted content workflow with influencer posts, Reddit distribution, and performance tracking.",
+      "roi": "Perfect for your next campaign: leave it to us and enjoy the results.",
+      "features": [
+        "10 Launch Weeks",
+        "10 Influencers Post",
+        "100,000 Views",
+        "10 Reddit Posts",
+        "2 Hours Marketing Consultation"
+      ],
+      "button": "Book a Call"
+    }
+  ],
+  "footer": [
+    "Services",
+    "Solutions",
+    "Apps",
+    "Success Stories",
+    "Privacy Policy",
+    "Terms"
+  ],
+  "integrationsShowcase": {
+    "kicker": "Applications",
+    "headline": "3,000+ pre-built apps. Limitless integration.",
+    "subheadline": "Quickly adapt to new market demands by connecting your entire tech stack. Use our library of pre-built apps for instant workflows, and our flexible platform to integrate any custom system.",
+    "cta": {
+      "text": "Browse apps",
+      "url": "#services"
+    },
+    "apps": [
+      "Perplexity AI",
+      "DeepSeek AI",
+      "OpenAI",
+      "HubSpot CRM",
+      "monday.com",
+      "NetSuite",
+      "Salesforce"
+    ]
+  },
+  "solutionsSection": {
+    "kicker": "Solutions",
+    "headline": "Adapt at speed with visual-first automation and AI",
+    "subheadline": "Axiom drives efficiencies, solves problems, and speeds innovation by breaking down silos across your business.",
+    "defaultTab": "it",
+    "tabs": [
+      {
+        "id": "it",
+        "label": "IT",
+        "title": "IT automation",
+        "description": "Cut complexity and move faster by automating everything from monitoring to incident response. Connect tools, integrate AI, reduce manual work, and free your team to focus on innovation.",
+        "ctaText": "Automate IT",
+        "ctaUrl": "#services",
+        "imageAlt": "IT automation workspace",
+        "flow": [
+          {
+            "icon": "G",
+            "label": "Add new workspace user"
+          },
+          {
+            "icon": "A",
+            "label": "Create a contract"
+          }
+        ]
+      },
+      {
+        "id": "operations",
+        "label": "Operations",
+        "title": "Operations automation",
+        "description": "Build connected workflows for approvals, reporting, handoffs, and fulfillment so work moves without waiting on manual updates.",
+        "ctaText": "Automate Ops",
+        "ctaUrl": "#services",
+        "imageAlt": "Operations automation workflow",
+        "flow": [
+          {
+            "icon": "F",
+            "label": "Capture request"
+          },
+          {
+            "icon": "S",
+            "label": "Route approval"
+          }
+        ]
+      },
+      {
+        "id": "marketing",
+        "label": "Marketing",
+        "title": "Marketing automation",
+        "description": "Turn campaign ideas into repeatable systems for content planning, distribution, lead capture, enrichment, and performance reporting.",
+        "ctaText": "Automate Marketing",
+        "ctaUrl": "#services",
+        "imageAlt": "Marketing automation dashboard",
+        "flow": [
+          {
+            "icon": "M",
+            "label": "Launch campaign"
+          },
+          {
+            "icon": "AI",
+            "label": "Generate reports"
+          }
+        ]
+      },
+      {
+        "id": "sales",
+        "label": "Sales",
+        "title": "Sales automation",
+        "description": "Qualify leads, sync CRM data, trigger follow-ups, and give your reps the context they need before every conversation.",
+        "ctaText": "Automate Sales",
+        "ctaUrl": "#services",
+        "imageAlt": "Sales pipeline automation",
+        "flow": [
+          {
+            "icon": "L",
+            "label": "Score lead"
+          },
+          {
+            "icon": "$",
+            "label": "Update pipeline"
+          }
+        ]
+      },
+      {
+        "id": "finance",
+        "label": "Finance",
+        "title": "Finance automation",
+        "description": "Automate invoices, reconciliations, approvals, and reporting with controlled workflows that keep every stakeholder aligned.",
+        "ctaText": "Automate Finance",
+        "ctaUrl": "#services",
+        "imageAlt": "Finance automation system",
+        "flow": [
+          {
+            "icon": "N",
+            "label": "Create invoice"
+          },
+          {
+            "icon": "Q",
+            "label": "Send approval"
+          }
+        ]
+      },
+      {
+        "id": "cx",
+        "label": "CX",
+        "title": "Customer experience automation",
+        "description": "Resolve common requests, route escalations, and keep customers updated with AI workflows that feel fast and consistent.",
+        "ctaText": "Automate CX",
+        "ctaUrl": "#services",
+        "imageAlt": "Customer experience automation",
+        "flow": [
+          {
+            "icon": "C",
+            "label": "Answer ticket"
+          },
+          {
+            "icon": "H",
+            "label": "Escalate issue"
+          }
+        ]
+      },
+      {
+        "id": "people",
+        "label": "People",
+        "title": "People automation",
+        "description": "Streamline onboarding, policy answers, employee requests, and people operations with secure AI assistants.",
+        "ctaText": "Automate People",
+        "ctaUrl": "#services",
+        "imageAlt": "People operations automation",
+        "flow": [
+          {
+            "icon": "P",
+            "label": "Start onboarding"
+          },
+          {
+            "icon": "D",
+            "label": "Share documents"
+          }
+        ]
+      }
+    ]
+  },
+  "successStories": {
+    "kicker": "",
+    "headline": "Automation success stories",
+    "subheadline": "Go beyond the hype and see how leading companies are achieving real results with AI and automation. Discover practical insights and proven strategies to transform your own business.",
+    "cta": {
+      "text": "Explore success stories",
+      "url": "#services"
+    },
+    "cards": [
+      {
+        "date": "Mar 12, 2026",
+        "duration": "4m",
+        "title": "How Axiom helps teams unlock internal efficiencies",
+        "person": "Gabriel Stock",
+        "company": "Perk"
+      },
+      {
+        "date": "Nov 25, 2025",
+        "duration": "5m",
+        "title": "How Axiom AI Agents help lower annual auditing costs",
+        "person": "Joe Graboff",
+        "company": "Celonis"
+      },
+      {
+        "date": "Sep 30, 2025",
+        "duration": "4m",
+        "title": "How Axiom helps teams save $100,000s and free up 100s of hours",
+        "person": "Blaine Carter",
+        "company": "FranklinCovey"
+      }
+    ]
+  },
+  "integrations": {
+    "calendlyUrl": "#services"
+  }
+}
