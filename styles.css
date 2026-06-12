@@ -272,6 +272,31 @@ h1 {
   box-shadow: var(--shadow);
 }
 
+.lottie-frame,
+.section-lottie,
+.solutions-lottie-strip,
+.success-lottie {
+  position: relative;
+  overflow: hidden;
+}
+
+.lottie-frame iframe,
+.section-lottie iframe,
+.solutions-lottie-strip iframe,
+.success-lottie iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.lottie-frame-hero {
+  height: 190px;
+  margin: -6px -4px 12px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(138, 0, 255, 0.08), rgba(98, 191, 202, 0.12));
+}
+
 .platform-label {
   margin: 0 0 8px;
   color: #b32aff;
@@ -309,6 +334,28 @@ h1 {
 
 .capabilities {
   background: #fff;
+}
+
+.section-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: 34px;
+  align-items: center;
+  margin-bottom: 34px;
+}
+
+.section-intro-grid .section-head {
+  margin-bottom: 0;
+}
+
+.section-lottie {
+  height: 260px;
+  border: 1px solid rgba(138, 0, 255, 0.12);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(98, 191, 202, 0.2), transparent 32%),
+    linear-gradient(145deg, #fff 0%, #fbf5ff 100%);
+  box-shadow: 0 16px 30px rgba(38, 0, 71, 0.06);
 }
 
 .capabilities .section-head h2 {
@@ -377,6 +424,13 @@ h1 {
 
 .solutions-section .section-head h2 {
   max-width: 650px;
+}
+
+.solutions-lottie-strip {
+  width: min(520px, 92vw);
+  height: 190px;
+  margin: -6px auto 28px;
+  border-radius: 22px;
 }
 
 .solutions-tabs-wrap {
@@ -626,6 +680,14 @@ h1 {
   color: #e7d9f4;
 }
 
+.success-lottie {
+  width: min(430px, 88vw);
+  height: 170px;
+  margin: -12px auto 32px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .success-kicker:empty {
   display: none;
 }
@@ -710,8 +772,8 @@ h1 {
 
 .services-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 340px);
-  justify-content: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .service-card {
@@ -725,8 +787,8 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  min-height: 290px;
-  padding: 16px;
+  min-height: 420px;
+  padding: 18px;
   border-radius: 18px;
   background-color: #17161f;
   background-image: linear-gradient(150deg, rgba(255, 255, 255, 0.04), transparent 44%),
@@ -748,15 +810,16 @@ h1 {
 .service-card__title {
   margin: 0;
   color: var(--white);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.18;
   font-weight: 800;
 }
 
 .service-card__paragraph {
-  max-width: 250px;
+  max-width: 100%;
   margin: 8px 0 0;
   color: var(--paragraph);
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   line-height: 1.45;
 }
 
@@ -770,7 +833,7 @@ h1 {
 .service-card__list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -778,7 +841,7 @@ h1 {
 
 .service-card__list-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
 }
 
@@ -797,8 +860,9 @@ h1 {
 
 .service-card__list-text {
   color: #fff;
-  font-size: 0.82rem;
-  font-weight: 750;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  font-weight: 650;
 }
 
 .service-card__button {
@@ -948,9 +1012,29 @@ h1 {
     min-height: auto;
   }
 
+  .section-intro-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .section-intro-grid .section-head p,
+  .section-intro-grid .section-head h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-lottie {
+    width: min(390px, 100%);
+    margin: 0 auto;
+  }
+
   .capabilities-grid,
   .success-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .apps-grid {
@@ -993,8 +1077,19 @@ h1 {
   }
 
   .hero-stats,
-  .apps-grid {
+  .apps-grid,
+  .services-grid {
     grid-template-columns: 1fr;
+  }
+
+  .lottie-frame-hero {
+    height: 160px;
+  }
+
+  .section-lottie,
+  .solutions-lottie-strip,
+  .success-lottie {
+    height: 150px;
   }
 
   .solutions-tabs-wrap {
