@@ -1,4 +1,4 @@
-const contentPath = "data/site-content.json";
+const inlineContentScriptId = "siteContent";
 
 const fallbackContent = {
   agencyTagline: "Our Services",
@@ -39,9 +39,10 @@ const fallbackContent = {
 
 async function loadContent() {
   try {
-    const response = await fetch(contentPath);
-    if (!response.ok) throw new Error("Could not load JSON");
-    return await response.json();
+    const inlineScript = document.getElementById(inlineContentScriptId);
+    const inlineJson = inlineScript?.textContent?.trim();
+    if (!inlineJson) throw new Error("Inline JSON not found");
+    return JSON.parse(inlineJson);
   } catch {
     return fallbackContent;
   }
@@ -66,6 +67,36 @@ function initNavigation() {
   nav.querySelectorAll("a").forEach((link) =>
     link.addEventListener("click", () => nav.classList.remove("open"))
   );
+}
+
+function initLazyEmbeds(scope = document) {
+  const frames = scope.querySelectorAll("iframe[data-src]:not([src])");
+  if (!frames.length) return;
+
+  const loadFrame = (frame) => {
+    const src = frame.dataset.src;
+    if (!src || frame.src) return;
+    frame.src = src;
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    frames.forEach(loadFrame);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          loadFrame(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "240px 0px" }
+  );
+
+  frames.forEach((frame) => observer.observe(frame));
 }
 
 function initRevealAnimations() {
@@ -109,7 +140,7 @@ function initSolutionsSection(section) {
       <div class="solutions-media">
         <div class="solution-photo solution-photo-lottie" role="img" aria-label="${active.imageAlt || active.title}">
           <iframe
-            src="https://lottie.host/embed/203c5b49-b3fb-4910-bfab-5490397f10de/IYs1FiN7mW.lottie"
+            data-src="https://lottie.host/embed/203c5b49-b3fb-4910-bfab-5490397f10de/IYs1FiN7mW.lottie"
             title="${active.label || "Solution"} automation animation"
             loading="lazy"
           ></iframe>
@@ -129,6 +160,7 @@ function initSolutionsSection(section) {
         <a class="btn btn-primary" href="${active.ctaUrl || "#success-stories"}">${active.ctaText || "Learn more"}</a>
       </div>
     `;
+    initLazyEmbeds(panel);
   };
 
   tabsContainer.addEventListener("click", (event) => {
@@ -155,17 +187,25 @@ function initAppsShowcase(showcase) {
   cta.href = showcase.cta?.url || "#success-stories";
 
   const grid = document.getElementById("appsGrid");
-  grid.innerHTML = (showcase.apps || [])
-    .map((app) => {
-      const icon = app
-        .split(" ")
-        .map((part) => part[0])
-        .join("")
-        .slice(0, 2)
-        .toUpperCase();
-      return `<article class="app-card"><span class="app-icon">${icon}</span><span class="app-name">${app}</span></article>`;
-    })
-    .join("");
+  const apps = showcase.apps || [];
+  const renderCard = (app, isClone = false) => {
+    const icon = app
+      .split(" ")
+      .map((part) => part[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+    return `<article class="app-card"${isClone ? ' aria-hidden="true"' : ""}><span class="app-icon">${icon}</span><span class="app-name">${app}</span></article>`;
+  };
+
+  if (!apps.length) {
+    grid.innerHTML = "";
+    return;
+  }
+
+  grid.innerHTML = `<div class="apps-track">${apps.map((app) => renderCard(app)).join("")}${apps
+    .map((app) => renderCard(app, true))
+    .join("")}</div>`;
 }
 
 function initSuccessStories(stories) {
@@ -290,6 +330,7 @@ async function main() {
   };
   populateContent(content);
   initNavigation();
+  initLazyEmbeds();
   initRevealAnimations();
   initBackToTop();
 }
