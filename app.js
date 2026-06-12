@@ -105,24 +105,14 @@ function initSolutionsSection(section) {
 
   const renderPanel = () => {
     const active = tabs[activeIndex];
-    const isItPanel = active.id === "it";
     panel.innerHTML = `
       <div class="solutions-media">
-        <div class="solution-photo ${isItPanel ? "solution-photo-lottie" : ""}" role="img" aria-label="${active.imageAlt || active.title}">
-          ${
-            isItPanel
-              ? `<iframe
-                  src="https://lottie.host/embed/7a026878-8d7f-4cb3-b5ba-f90f452b8531/9FIfHhLkPS.lottie"
-                  title="IT automation animation"
-                  loading="lazy"
-                ></iframe>`
-              : ""
-          }
-          <div class="solution-screen"></div>
-          <div class="solution-person">
-            <span></span>
-            <strong>${active.label}</strong>
-          </div>
+        <div class="solution-photo solution-photo-lottie" role="img" aria-label="${active.imageAlt || active.title}">
+          <iframe
+            src="https://lottie.host/embed/203c5b49-b3fb-4910-bfab-5490397f10de/IYs1FiN7mW.lottie"
+            title="${active.label || "Solution"} automation animation"
+            loading="lazy"
+          ></iframe>
         </div>
         <div class="solutions-flow">
           ${(active.flow || [])

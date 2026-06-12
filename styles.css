@@ -540,15 +540,7 @@ h1 {
   background: linear-gradient(135deg, #f3e2d8 0%, #f7efe8 42%, #d8d5d2 100%);
 }
 
-.solution-photo::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 58%;
-  height: 32%;
-  background: #ffffff;
-}
+
 
 .solution-photo iframe {
   position: absolute;
@@ -564,55 +556,7 @@ h1 {
   background: linear-gradient(135deg, #fff 0%, #f8efff 100%);
 }
 
-.solution-photo-lottie::before {
-  z-index: 1;
-  width: 48%;
-  height: 24%;
-  background: rgba(255, 255, 255, 0.78);
-}
 
-.solution-screen {
-  position: absolute;
-  left: 38px;
-  top: 48px;
-  width: 150px;
-  height: 112px;
-  border-radius: 6px;
-  background: #211928;
-  box-shadow: 0 18px 0 #fff;
-  z-index: 2;
-}
-
-.solution-person {
-  position: absolute;
-  right: 74px;
-  bottom: 46px;
-  display: grid;
-  justify-items: center;
-  gap: 10px;
-  color: #fff;
-  z-index: 2;
-}
-
-.solution-person span {
-  width: 96px;
-  aspect-ratio: 1;
-  display: block;
-  border-radius: 999px 999px 46px 46px;
-  background: linear-gradient(180deg, #f0b38c 0 38%, #111827 39% 100%);
-  box-shadow: 0 70px 0 20px #111827;
-}
-
-.solution-person strong {
-  position: relative;
-  z-index: 1;
-  min-width: 72px;
-  border-radius: 999px;
-  padding: 6px 10px;
-  background: #fff;
-  color: var(--text);
-  font-size: 0.82rem;
-}
 
 .solutions-flow {
   display: flex;
