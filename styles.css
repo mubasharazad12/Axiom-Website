@@ -639,12 +639,6 @@ h1 {
   font-size: 1.35rem;
 }
 
-.capability-card:first-child .capability-icon {
-  border-radius: var(--radius-pill);
-  background: #f5b2ff;
-  color: var(--text);
-}
-
 .capability-card h3 {
   max-width: 280px;
   margin: 0 0 10px;
