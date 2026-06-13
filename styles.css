@@ -123,15 +123,12 @@ h1 {
 }
 
 .brand-logo {
-  height: 54px;
+  height: 70px;
   width: auto;
   display: block;
   object-fit: contain;
 }
 
-.brand-footer .brand-logo {
-  height: 44px;
-}
 
 .main-nav {
   position: relative;
