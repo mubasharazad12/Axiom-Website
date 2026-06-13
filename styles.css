@@ -372,50 +372,6 @@ h1 {
   color: rgba(38, 0, 71, 0.72);
 }
 
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.hero-stat {
-  position: relative;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 17px 16px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 16px 28px rgba(38, 0, 71, 0.08);
-  transition: transform 0.24s ease, box-shadow 0.24s ease;
-  animation: heroStatFloat 4.6s ease-in-out infinite;
-}
-
-.hero-stat:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 34px rgba(38, 0, 71, 0.14);
-}
-
-.hero-stat:nth-child(2) {
-  animation-delay: 0.24s;
-}
-
-.hero-stat:nth-child(3) {
-  animation-delay: 0.42s;
-}
-
-.hero-stat strong {
-  display: block;
-  font: 800 1.4rem/1 Manrope, Inter, sans-serif;
-}
-
-.hero-stat span {
-  display: block;
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 0.84rem;
-}
-
 .cta-group {
   display: flex;
   flex-wrap: wrap;
@@ -591,17 +547,6 @@ h1 {
   50% {
     opacity: 0.95;
     transform: scale(1.06);
-  }
-}
-
-@keyframes heroStatFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-3px);
   }
 }
 
@@ -1500,7 +1445,6 @@ h1 {
     right: -24%;
   }
 
-  .hero-stats,
   .services-grid {
     grid-template-columns: 1fr;
   }
@@ -1563,7 +1507,6 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .hero-bg-flow,
   .hero-glow,
-  .hero-stat,
   .platform-card {
     animation: none;
   }

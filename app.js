@@ -393,10 +393,6 @@ function populateContent(content) {
   secondary.textContent = hero.secondaryCta?.text || "Watch Demo";
   secondary.href = hero.secondaryCta?.url || "#success-stories";
 
-  document.getElementById("heroStats").innerHTML = (hero.stats || [])
-    .map((stat) => `<article class="hero-stat"><strong>${stat.value}</strong><span>${stat.label}</span></article>`)
-    .join("");
-
   renderList(document.getElementById("targetAudience"), content.targetAudience || []);
   document.getElementById("capabilitiesHeadline").textContent = second.headline || "";
   document.getElementById("capabilitiesSubheadline").textContent = second.subheadline || "";
