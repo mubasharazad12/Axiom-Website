@@ -835,10 +835,6 @@ h1 {
   animation: appsMarquee 24s linear infinite;
 }
 
-.apps-grid:hover .apps-track {
-  animation-play-state: paused;
-}
-
 .app-card {
   flex: 0 0 136px;
   min-height: 100px;
@@ -857,34 +853,44 @@ h1 {
   display: grid;
   place-items: center;
   border-radius: var(--radius-pill);
-  background: #62bfca;
+  background: linear-gradient(135deg, #62bfca, #5f73ff);
   color: #fff;
   font-size: 0.7rem;
   font-weight: 900;
+  overflow: hidden;
 }
 
-.app-card:nth-child(7n + 2) .app-icon {
-  background: #5f73ff;
+.app-icon.has-logo {
+  background: #fff;
+  border: 1px solid rgba(38, 0, 71, 0.14);
 }
 
-.app-card:nth-child(7n + 3) .app-icon {
-  background: #10a37f;
+.app-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
 }
 
-.app-card:nth-child(7n + 4) .app-icon {
-  background: var(--accent);
+.app-fallback {
+  line-height: 1;
 }
 
-.app-card:nth-child(7n + 5) .app-icon {
-  background: #f42a66;
+.app-icon.has-logo .app-fallback {
+  display: none;
 }
 
-.app-card:nth-child(7n + 6) .app-icon {
-  background: #050505;
+.app-icon.logo-missing {
+  background: linear-gradient(135deg, #62bfca, #5f73ff);
+  border: 0;
 }
 
-.app-card:nth-child(7n + 7) .app-icon {
-  background: #62bfca;
+.app-icon.logo-missing .app-logo {
+  display: none;
+}
+
+.app-icon.logo-missing .app-fallback {
+  display: block;
 }
 
 .app-name {

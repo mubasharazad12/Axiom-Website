@@ -281,14 +281,27 @@ function initAppsShowcase(showcase) {
 
   const grid = document.getElementById("appsGrid");
   const apps = showcase.apps || [];
+  const getAppMeta = (app) => {
+    if (typeof app === "string") {
+      return { name: app, logo: "" };
+    }
+    return {
+      name: app?.name || "",
+      logo: app?.logo || ""
+    };
+  };
+
   const renderCard = (app, isClone = false) => {
-    const icon = app
+    const meta = getAppMeta(app);
+    const icon = meta.name
       .split(" ")
       .map((part) => part[0])
       .join("")
       .slice(0, 2)
       .toUpperCase();
-    return `<article class="app-card"${isClone ? ' aria-hidden="true"' : ""}><span class="app-icon">${icon}</span><span class="app-name">${app}</span></article>`;
+    return `<article class="app-card"${isClone ? ' aria-hidden="true"' : ""}><span class="app-icon ${meta.logo ? "has-logo" : ""}">${
+      meta.logo ? `<img class="app-logo" src="${meta.logo}" alt="${meta.name} logo" loading="lazy" decoding="async" />` : ""
+    }<span class="app-fallback">${icon}</span></span><span class="app-name">${meta.name}</span></article>`;
   };
 
   if (!apps.length) {
@@ -299,6 +312,12 @@ function initAppsShowcase(showcase) {
   grid.innerHTML = `<div class="apps-track">${apps.map((app) => renderCard(app)).join("")}${apps
     .map((app) => renderCard(app, true))
     .join("")}</div>`;
+
+  grid.querySelectorAll(".app-logo").forEach((img) => {
+    const iconWrap = img.closest(".app-icon");
+    if (!iconWrap) return;
+    img.addEventListener("error", () => iconWrap.classList.add("logo-missing"));
+  });
 }
 
 function initSuccessStories(stories) {
