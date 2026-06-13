@@ -278,9 +278,9 @@ h1 {
 }
 
 .hero-bg-flow-b {
-  width: min(560px, 52vw);
-  top: 15%;
-  left: -5%;
+  width: min(160px, 25vw);
+  top: 5%;
+  left: 3%;
   animation: heroDriftB 24s ease-in-out infinite;
 }
 
