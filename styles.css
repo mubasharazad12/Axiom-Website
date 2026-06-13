@@ -271,9 +271,9 @@ h1 {
 }
 
 .hero-bg-flow-a {
-  width: min(640px, 58vw);
+  width: clamp(420px, 48vw, 660px);
   top: 12%;
-  right: -12%;
+  right: -14%;
   animation: heroDriftA 28s linear infinite;
 }
 
@@ -282,6 +282,45 @@ h1 {
   top: 5%;
   left: 3%;
   animation: heroDriftB 24s ease-in-out infinite;
+}
+
+@media (min-width: 1600px) {
+  .hero-bg-flow-a {
+    width: clamp(560px, 42vw, 760px);
+    right: -10%;
+  }
+
+  .hero-bg-flow-b {
+    width: min(190px, 16vw);
+    top: 6%;
+    left: 4.5%;
+  }
+}
+
+@media (max-width: 1399px) {
+  .hero-bg-flow-a {
+    width: clamp(380px, 50vw, 600px);
+    right: -18%;
+  }
+
+  .hero-bg-flow-b {
+    width: min(150px, 24vw);
+    top: 6%;
+    left: 2%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .hero-bg-flow-a {
+    width: clamp(340px, 54vw, 520px);
+    right: -24%;
+  }
+
+  .hero-bg-flow-b {
+    width: min(130px, 22vw);
+    top: 4%;
+    left: 1.5%;
+  }
 }
 
 .hero-glow {
@@ -1337,13 +1376,14 @@ h1 {
   }
 
   .hero-bg-flow-a {
-    width: min(520px, 80vw);
+    width: clamp(300px, 72vw, 520px);
     right: -30%;
   }
 
   .hero-bg-flow-b {
-    width: min(460px, 74vw);
-    right: -18%;
+    width: min(110px, 18vw);
+    top: 3%;
+    left: 1%;
   }
 
   .platform-card {
