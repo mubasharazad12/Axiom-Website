@@ -63,10 +63,103 @@ function initNavigation() {
   const menuBtn = document.getElementById("menuBtn");
   const nav = document.getElementById("mainNav");
   if (!menuBtn || !nav) return;
-  menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
-  nav.querySelectorAll("a").forEach((link) =>
-    link.addEventListener("click", () => nav.classList.remove("open"))
+
+  const links = Array.from(nav.querySelectorAll("a[href^='#']"));
+  const sections = links
+    .map((link) => {
+      const targetId = link.getAttribute("href")?.slice(1);
+      if (!targetId) return null;
+      const section = document.getElementById(targetId);
+      if (!section) return null;
+      return { link, section, id: targetId };
+    })
+    .filter(Boolean);
+
+  const setActiveLink = (id) => {
+    links.forEach((link) => {
+      const isActive = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const closeMenu = () => {
+    nav.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  };
+
+  menuBtn.setAttribute("aria-expanded", "false");
+  menuBtn.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  links.forEach((link) =>
+    link.addEventListener("click", () => {
+      const targetId = link.getAttribute("href")?.slice(1);
+      if (targetId) setActiveLink(targetId);
+      closeMenu();
+    })
   );
+
+  if (sections.length) {
+    if ("IntersectionObserver" in window) {
+      const visibleRatios = new Map();
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.id;
+            if (entry.isIntersecting) {
+              visibleRatios.set(id, entry.intersectionRatio);
+            } else {
+              visibleRatios.delete(id);
+            }
+          });
+
+          if (!visibleRatios.size) return;
+          let activeId = sections[0].id;
+          let maxRatio = -1;
+          visibleRatios.forEach((ratio, id) => {
+            if (ratio > maxRatio) {
+              maxRatio = ratio;
+              activeId = id;
+            }
+          });
+          setActiveLink(activeId);
+        },
+        { rootMargin: "-34% 0px -52% 0px", threshold: [0.2, 0.4, 0.6, 0.8] }
+      );
+
+      sections.forEach(({ section }) => sectionObserver.observe(section));
+    } else {
+      const updateActiveByScroll = () => {
+        const scrollY = window.scrollY + window.innerHeight * 0.42;
+        let activeId = sections[0].id;
+        sections.forEach(({ section, id }) => {
+          if (scrollY >= section.offsetTop) activeId = id;
+        });
+        setActiveLink(activeId);
+      };
+      window.addEventListener("scroll", updateActiveByScroll, { passive: true });
+      updateActiveByScroll();
+    }
+  }
+
+  const applyHashActiveState = () => {
+    const hash = window.location.hash.slice(1);
+    if (hash && sections.some(({ id }) => id === hash)) {
+      setActiveLink(hash);
+    } else if (sections[0]) {
+      setActiveLink(sections[0].id);
+    }
+  };
+
+  window.addEventListener("hashchange", applyHashActiveState);
+  applyHashActiveState();
 }
 
 function initLazyEmbeds(scope = document) {
@@ -216,6 +309,13 @@ function initSuccessStories(stories) {
   const cta = document.getElementById("successCta");
   cta.textContent = stories.cta?.text || "Explore success stories";
   cta.href = stories.cta?.url || "#success-stories";
+  const ctaTarget = stories.cta?.target || "_self";
+  cta.target = ctaTarget;
+  if (ctaTarget === "_blank") {
+    cta.rel = "noopener noreferrer";
+  } else {
+    cta.removeAttribute("rel");
+  }
   const grid = document.getElementById("successGrid");
   grid.innerHTML = (stories.cards || [])
     .map(

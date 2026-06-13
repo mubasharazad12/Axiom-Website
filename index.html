@@ -8,6 +8,7 @@
       content="Premium AI automation agency building custom AI employees that work 24/7."
     />
     <title>Axiom AI Automation Agency</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://lottie.host" />
@@ -21,23 +22,23 @@
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="#home">
-          <span class="brand-mark">A</span>
-          <span class="brand-text">Axiom AI</span>
+        <a class="brand" href="#home" aria-label="Axiom AI Home">
+          <img class="brand-logo" src="assets/autoaxiomlogo3-removebg-preview.png" alt="Axiom AI" loading="eager" decoding="async" />
         </a>
         <button class="menu-btn" id="menuBtn" aria-label="Open navigation">
           <span></span><span></span><span></span>
         </button>
         <nav id="mainNav" class="main-nav">
-          <a href="#capabilities">Automation</a>
-          <a href="#solutions">Solutions</a>
-          <a href="#services">Services</a>
-          <a href="#apps">Apps</a>
-          <a href="#success-stories">Success Stories</a>
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#capabilities">Automation</a>
+          <a class="nav-link" href="#solutions">Solutions</a>
+          <a class="nav-link" href="#services">Services</a>
+          <a class="nav-link" href="#apps">Apps</a>
+          <a class="nav-link" href="#success-stories">Success Stories</a>
         </nav>
         <div class="header-lottie" aria-hidden="true">
           <iframe
-            data-src="https://lottie.host/embed/f1fbaca6-6d61-4682-9d3d-e99b8086ea1c/CknF3idp3I.lottie"
+            data-src="assets/Sparkles Loop Loader ai.svg"
             title="Axiom AI header animation"
             loading="lazy"
           ></iframe>
@@ -47,6 +48,22 @@
 
     <main id="home">
       <section class="hero section">
+        <div class="hero-background" aria-hidden="true">
+          <img
+            class="hero-bg-flow hero-bg-flow-a"
+            src="assets/Automated Workflows.svg"
+            alt=""
+            decoding="async"
+          />
+          <img
+            class="hero-bg-flow hero-bg-flow-b"
+            src="assets/autoaxiomlogo-removebg-preview.png"
+            alt=""
+            decoding="async"
+          />
+          <span class="hero-glow hero-glow-1"></span>
+          <span class="hero-glow hero-glow-2"></span>
+        </div>
         <div class="container hero-grid">
           <div class="hero-content reveal">
             <p class="eyebrow" id="agencyTagline"></p>
@@ -63,7 +80,7 @@
             <div class="workflow-card platform-card">
               <div class="lottie-frame lottie-frame-hero">
                 <iframe
-                  data-src="https://lottie.host/embed/f79eb226-1dbc-4398-bf57-e69ba43db99c/4i2mUXktcG.lottie"
+                  data-src="assets/Isometric animation for UIUX design landing page.svg"
                   title="AI automation workflow animation"
                   loading="lazy"
                 ></iframe>
@@ -93,7 +110,7 @@
             </div>
             <div class="section-lottie reveal" aria-hidden="true">
               <iframe
-                data-src="https://lottie.host/embed/4441f629-1488-49ed-a969-6cc4e8882b57/oRyMoQNVOs.lottie"
+                data-src="assets/Automated Workflows.svg"
                 title="Automation capabilities animation"
                 loading="lazy"
               ></iframe>
@@ -115,7 +132,7 @@
           </div>
           <div class="solutions-lottie-strip reveal" aria-hidden="true">
             <iframe
-              data-src="https://lottie.host/embed/e5de5b0f-10d4-4093-9229-56202b09ccc7/gHOkOwoXRn.lottie"
+              data-src="assets/Saabu.io.svg"
               title="Connected AI systems animation"
               loading="lazy"
             ></iframe>
@@ -135,7 +152,7 @@
             </div>
             <div class="services-lottie" aria-hidden="true">
               <iframe
-                data-src="https://lottie.host/embed/bf22daf6-1d8c-42f2-a469-4f3dd89d3966/ai2SM4XzGl.lottie"
+                data-src="assets/Workflow.svg"
                 title="AI services animation"
                 loading="lazy"
               ></iframe>
@@ -168,7 +185,7 @@
           </div>
           <div class="success-lottie reveal" aria-hidden="true">
             <iframe
-              data-src="https://lottie.host/embed/d3b82dbc-9a96-4f72-a846-2046fa3b8a20/FP2cAURWWc.lottie"
+              data-src="assets/Marketing Campaign - Creative 3D Animation.svg"
               title="AI results animation"
               loading="lazy"
             ></iframe>
@@ -184,9 +201,8 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-brand-block reveal">
-          <a class="brand" href="#home">
-            <span class="brand-mark">A</span>
-            <span class="brand-text">Axiom AI</span>
+          <a class="brand brand-footer" href="#home" aria-label="Axiom AI Home">
+            <img class="brand-logo" src="assets/autoaxiomlogo3-removebg-preview.png" alt="Axiom AI" loading="lazy" decoding="async" />
           </a>
           <p>AI agents, automation systems, and connected workflows built to help modern teams move faster.</p>
           <div class="footer-socials" aria-label="Social links">
@@ -212,7 +228,7 @@
         </div>
         <div class="footer-lottie reveal" aria-hidden="true">
           <iframe
-            data-src="https://lottie.host/embed/ac37b7d9-46a1-4f6c-8172-71c44d1c58ef/Rdc91w7249.lottie"
+            data-src="assets/E V E.svg"
             title="Axiom AI footer animation"
             loading="lazy"
           ></iframe>
@@ -563,7 +579,8 @@
     "subheadline": "Go beyond the hype and see how leading companies are achieving real results with AI and automation. Discover practical insights and proven strategies to transform your own business.",
     "cta": {
       "text": "Explore success stories",
-      "url": "#services"
+      "url": "https://aimultiple.com/agentic-ai",
+      "target": "_blank"
     },
     "cards": [
       {
